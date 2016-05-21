@@ -38,6 +38,11 @@ class Udacidata
     num.empty? ? @@all.last : @@all.last(num[0])
   end
 
+  def self.find(num)
+    product_ids = @@all.map {|product| product.id}
+    product_ids.include?(num) ? @@all[num-1] : "There is no product with id #{num}"
+  end
+
   private
 
   def self.read_file
