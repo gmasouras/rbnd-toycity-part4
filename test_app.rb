@@ -12,5 +12,11 @@ end
 
 product = Product.create(brand: "ColtToys", name: "Orchid Plant", price: 2.00)
 
-
 array_of_products = Product.all
+array_of_products = Product.all
+
+expected = CSV.read(@data_path).drop(1).length
+
+product = Product.first
+
+p product
