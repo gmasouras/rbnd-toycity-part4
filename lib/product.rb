@@ -17,7 +17,7 @@ class Product < Udacidata
   end
 
   def ==(another_product)
-    (@name == another_product.name) && (@brand == another_product.brand) && (@price.to_s == another_product.price.to_s)
+    (@id == another_product.id) && (@name == another_product.name) && (@brand == another_product.brand) && (@price.to_s == another_product.price.to_s)
   end
 
   private

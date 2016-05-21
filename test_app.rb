@@ -12,6 +12,6 @@ end
 
 product = Product.create(brand: "ColtToys", name: "Orchid Plant", price: 2.00)
 
-# p Product.all
+Product.all
 
 p Product.find(1)

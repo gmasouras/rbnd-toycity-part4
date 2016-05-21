@@ -8,8 +8,8 @@ class Udacidata
 
   def self.create(opts=nil)
       database_products = read_file
-      check_database = database_products.map {|product| [product[1], product[2], product[3]]}
-      check_product = [opts[:brand], opts[:name], opts[:price].to_s]
+      check_database = database_products.map {|product| [product[0], product[1], product[2], product[3]]}
+      check_product = [opts[:id], opts[:brand], opts[:name], opts[:price].to_s]
 
       if check_database.include? check_product
         product = new opts
