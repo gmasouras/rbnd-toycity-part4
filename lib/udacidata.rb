@@ -31,11 +31,13 @@ class Udacidata
   end
 
   def self.first(*num)
-   num.empty? ? @@all.first : @@all.first(num[0])
+    all_products = all
+    num.empty? ? all_products.first : all_products.first(num[0])
   end
 
   def self.last(*num)
-    num.empty? ? @@all.last : @@all.last(num[0])
+    all_products = all
+    num.empty? ? all_products.last : all_products.last(num[0])
   end
 
   def self.find(num)
