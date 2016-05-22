@@ -31,18 +31,16 @@ class Udacidata
   end
 
   def self.first(*num)
-    all_products = all
-    num.empty? ? all_products.first : all_products.first(num[0])
+    num.empty? ? all.first : all.first(num[0])
   end
 
   def self.last(*num)
-    all_products = all
-    num.empty? ? all_products.last : all_products.last(num[0])
+    num.empty? ? all.last : all.last(num[0])
   end
 
   def self.find(num)
-    product_ids = @@all.map {|product| product.id}
-    product_ids.include?(num) ? @@all[num-1] : "There is no product with id #{num}"
+    product_ids = all.map {|product| product.id}
+    product_ids.include?(num) ? all[num-1] : "There is no product with id #{num}"
   end
 
   private
