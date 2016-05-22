@@ -9,8 +9,6 @@ class TestUdacidata < MiniTest::Test
     CSV.open(@data_path, "wb") do |csv|
       csv << ["id", "brand", "product", "price"]
     end
-    Product.create(brand: "WalterToys", name: "Sticky Notes", price: 34.00)
-    Product.create(brand: "ColtToys", name: "Orchid Plant", price: 2.00)
     Product.create(brand: "WhatToys", name: "Apple Plant", price: 5.00)
     Product.create(brand: "AhatToys", name: "Apple Plant", price: 7.00)
     Product.create(brand: "BhatToys", name: "Apple Plant", price: 8.00)
@@ -18,7 +16,6 @@ class TestUdacidata < MiniTest::Test
     Product.create(brand: "DhatToys", name: "Apple Plant", price: 11.00)
     Product.create(brand: "EhatToys", name: "Apple Plant", price: 12.00)
     Product.create(brand: "FhatToys", name: "Apple Plant", price: 13.00)
-    db_seed
   end
 
   def test_create_method_adds_to_database
@@ -113,18 +110,18 @@ class TestUdacidata < MiniTest::Test
     assert_instance_of(Product, product)
   end
   
-  # def test_destroy_method_removes_product_from_database
-  #   before = CSV.read(@data_path).length
-  #   Product.destroy(2)
-  #   after = CSV.read(@data_path).length
-  #   assert_equal(before - 1, after)
-  # end
-  #
-  # def test_destroy_method_returns_deleted_product
-  #   product = Product.destroy(7)
-  #   assert_equal(7, product.id)
-  # end
-  #
+  def test_destroy_method_removes_product_from_database
+    before = CSV.read(@data_path).length
+    Product.destroy(2)
+    after = CSV.read(@data_path).length
+    assert_equal(before - 1, after)
+  end
+  
+  def test_destroy_method_returns_deleted_product
+    product = Product.destroy(7)
+    assert_equal(7, product.id)
+  end
+  
   # def test_find_by_brand_method_returns_first_product_with_given_brand
   #   Product.create(brand: "OritToys", name: "Sticky Notes", price: 34.00)
   #   product = Product.find_by_brand("OritToys")

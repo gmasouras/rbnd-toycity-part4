@@ -39,8 +39,15 @@ class Udacidata
   end
 
   def self.find(num)
-    product_ids = all.map {|product| product.id}
-    product_ids.include?(num) ? all[num-1] : "There is no product with id #{num}"
+    all.find {|product| product.id == num}
+  end
+
+  def self.destroy(num)
+    product_to_delete = find(num)
+    db = read_file
+    db.delete_if {|product| product[0] == num.to_s}
+    write_file(db)
+    return product_to_delete
   end
 
   private
