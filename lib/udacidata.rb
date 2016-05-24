@@ -4,14 +4,15 @@ require 'csv'
 
 class Udacidata
   # Your code goes here!
-  @@all = []
+  create_finder_methods :name, :brand
+  @@all=[]
 
   def self.create(opts=nil)
       database_products = read_file
-      check_database = database_products.map {|product| [product[0], product[1], product[2], product[3]]}
-      check_product = [opts[:id], opts[:brand], opts[:name], opts[:price].to_s]
+      check_database_ids = database_products.map {|product| product[0].to_s}
+      check_product_id = opts[:id].to_s
 
-      if check_database.include? check_product
+      if check_database_ids.include?(check_product_id)
         product = new opts
         return product
       else
@@ -23,9 +24,10 @@ class Udacidata
   end
 
   def self.all
+    @@all.clear
   	read_file[1..-1].each {|line|
-      product = create(id: line[0], brand: line[1], name: line[2], price: line[3])
-      @@all << product unless @@all.include? product 
+      product = new(id: line[0], brand: line[1], name: line[2], price: line[3])
+      @@all << product
     }
     @@all
   end
