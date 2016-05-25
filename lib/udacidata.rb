@@ -52,6 +52,10 @@ class Udacidata
     return product_to_delete
   end
 
+  def self.where(brands={})
+    all.find_all {|product| product.brand == brands[:brand]}
+  end
+
   private
 
   def self.read_file
