@@ -10,3 +10,4 @@ Product.create(brand: "AhatToys", name: "Apple Plant", price: 7.00)
 Product.create(brand: "BhatToys", name: "Apple Plant", price: 8.00)
 Product.create(brand: "WalterToys", name: "Lucky Notes", price: 31.00)
 Product.create(brand: "WalterToys", name: "Bucky Notes", price: 32.00)
+

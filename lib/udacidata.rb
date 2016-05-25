@@ -56,6 +56,16 @@ class Udacidata
     all.find_all {|product| product.brand == brands[:brand]}
   end
 
+  def update(opts={})
+    db = self.class.read_file
+    self.name = opts[:name] if opts.has_key? :name
+    self.brand = opts[:brand] if opts.has_key? :brand
+    self.price = opts[:price].to_s if opts.has_key? :price
+    db.find {|product| product[0] == self.id.to_s}.replace([self.id, self.brand, self.name, self.price])
+    self.class.write_file(db)
+    return self
+  end
+
   private
 
   def self.read_file
