@@ -2,6 +2,7 @@ require_relative 'udacidata'
 
 class Product < Udacidata
   attr_reader :id, :price, :brand, :name
+  attr_writer :price, :brand, :name
 
   def initialize(opts={})
     # Get last ID from the database if ID exists
@@ -14,6 +15,13 @@ class Product < Udacidata
     @brand = opts[:brand]
     @name = opts[:name]
     @price = opts[:price]
+  end
+
+  def update(opts={})
+    @name = opts[:name] if opts.has_key? :name
+    @brand = opts[:brand] if opts.has_key? :brand
+    @price = opts[:price].to_s if opts.has_key? :price
+    return self
   end
 
   def ==(another_product)
