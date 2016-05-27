@@ -41,7 +41,8 @@ class Udacidata
   end
 
   def self.find(num)
-    all.find {|product| product.id == num}
+    product = all.find {|product| product.id == num}
+    product.nil? ? (raise ProductNotFoundError,"Given id does not exist") : product
   end
 
   def self.destroy(num)
@@ -52,8 +53,8 @@ class Udacidata
     return product_to_delete
   end
 
-  def self.where(brands={})
-    all.find_all {|product| product.brand == brands[:brand]}
+  def self.where(products={})
+    all.find_all {|product| product.send(products.keys[0].to_s) == products[products.keys[0]]}
   end
 
   def update(opts={})

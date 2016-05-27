@@ -6,16 +6,12 @@ require_relative 'lib/analyzable'
 CSV.open(@data_path, "wb") do |csv|
   csv << ["id", "brand", "product", "price"]
 end
-Product.create(brand: "WhatToys", name: "Apple Plant", price: 5.00)
-Product.create(brand: "BhatToys", name: "Apple Plant", price: 7.00)
-Product.create(brand: "BhatToys", name: "Apple Plant", price: 8.00)
-Product.create(brand: "WalterToys", name: "Lucky Notes", price: 31.00)
-Product.create(brand: "WalterToys", name: "Bucky Notes", price: 32.00)
-Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 15.32)
-Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 18.23)
-Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 11.30)
- 
 
-puts Analyzable::average_price(Product.where(brand: "AverageBrand"))
+p1 = Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 15.32)
+p2 = Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 18.23)
+p3 = Product.create(brand: "AverageBrand", name: "Nyan Cat", price: 11.30)
+Product.create(brand: "FindMyBrand", name: "Skateboard", price: "11.30")
+Product.create(brand: "Lego", name: "FindMyName", price: "11.30")
 
+p Product.destroy(6)
 

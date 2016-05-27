@@ -15,6 +15,19 @@ module Analyzable
   	return (products_prices.reduce(:+)/products_prices.length).round(2)
   end
 
+  def self.print_report(products)
+    report = "Average price: #{average_price(products)}"
+    puts "Inventory by brand:"
+    count_by_brand(products).each {|brand, quantity|
+      puts "- #{brand}: #{quantity}"
+    }
+    puts "Inventory by name:"
+    count_by_name(products).each {|name, quantity|
+      puts "- #{name}: #{quantity}"
+    }
+    return report
+  end
+
   private
 
   def self.attr_times(product_attrs)

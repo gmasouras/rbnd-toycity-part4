@@ -1,9 +1,6 @@
 id,brand,product,price
-1,WhatToys,Apple Plant,5.0
-2,BhatToys,Apple Plant,7.0
-3,BhatToys,Apple Plant,8.0
-4,WalterToys,Lucky Notes,31.0
-5,WalterToys,Bucky Notes,32.0
-6,AverageBrand,Nyan Cat,15.32
-7,AverageBrand,Nyan Cat,18.23
-8,AverageBrand,Nyan Cat,11.3
+1,AverageBrand,Nyan Cat,15.32
+2,AverageBrand,Nyan Cat,18.23
+3,AverageBrand,Nyan Cat,11.3
+4,FindMyBrand,Skateboard,11.30
+5,Lego,FindMyName,11.30
