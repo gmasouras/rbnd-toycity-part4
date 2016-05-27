@@ -42,7 +42,15 @@ class Udacidata
 
   def self.find(num)
     product = all.find {|product| product.id == num}
-    product.nil? ? (raise ProductNotFoundError,"Given id does not exist") : product
+    if product.nil? 
+      begin
+        raise ProductNotFoundError,"Given id does not exist"
+      rescue ProductNotFoundError => pnfe
+        p pnfe.message
+        p pnfe.backtrace
+      end
+    else product
+    end
   end
 
   def self.destroy(num)
